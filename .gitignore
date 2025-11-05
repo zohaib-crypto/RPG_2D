@@ -1,0 +1,43 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Pp]ackages/com.unity.package-manager*
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+Assets/AssetStoreTools*
+
+# ===================== #
+# Visual Studio / JetBrains / VSCode #
+# ===================== #
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+
+# ============ #
+# Crash / Debug #
+# ============ #
+sysinfo.txt
+*.stacktrace
+
+# ============ #
+# Build Results #
+# ============ #
+Build/
+Builds/
