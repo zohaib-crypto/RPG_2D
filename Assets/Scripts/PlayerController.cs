@@ -32,7 +32,11 @@ public class PlayerController : MonoBehaviour
                 var targetPos = transform.position;
                 targetPos.x += _input.x;
                 targetPos.y += _input.y;
-                StartCoroutine(Move(targetPos));
+                if (IsWalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
+
             }
         }
         _animator.SetBool("isMoving", _isMoving);
@@ -49,6 +53,15 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         _isMoving = false;
+    }
+
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
+        {
+            return false;
+        }
+        return true;
     }
 
 
