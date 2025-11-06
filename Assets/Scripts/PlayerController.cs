@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
     private Vector2 _input;
     private Animator _animator;
-
+    [SerializeField]
+    private LayerMask solidObjectsLayer;
     void Awake()
     {
         _animator = GetComponent<Animator>();
