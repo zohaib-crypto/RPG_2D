@@ -4,20 +4,53 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float _horizontalInput;
-    private float _verticalInput;
+
     [SerializeField]
     private float _moveSpeed;
-    void Start()
+    [SerializeField]
+    private bool _isMoving;
+    private Vector2 _input;
+    private Animator _animator;
+
+    void Awake()
     {
-
+        _animator = GetComponent<Animator>();
     }
-
-
     void Update()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
-        transform.Translate(new Vector3(_horizontalInput, _verticalInput) * _moveSpeed * Time.deltaTime);
+        if (!_isMoving)
+        {
+            _input.x = Input.GetAxisRaw("Horizontal");
+            _input.y = Input.GetAxisRaw("Vertical");
+
+            if (_input.x != 0) _input.y = 0;
+            if (_input != Vector2.zero)
+            {
+                _animator.SetFloat("moveX", _input.x);
+                _animator.SetFloat("moveY", _input.y);
+                var targetPos = transform.position;
+                targetPos.x += _input.x;
+                targetPos.y += _input.y;
+                StartCoroutine(Move(targetPos));
+            }
+        }
+        _animator.SetBool("isMoving", _isMoving);
     }
+
+    IEnumerator Move(Vector3 targetPos)
+    {
+        _isMoving = true;
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, _moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        transform.position = targetPos;
+        _isMoving = false;
+    }
+
+
+
+
 }
