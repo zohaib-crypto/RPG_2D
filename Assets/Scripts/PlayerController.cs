@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     [SerializeField]
     private LayerMask solidObjectsLayer;
+    [SerializeField]
+    private LayerMask interactablesLayer;
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -40,6 +42,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         _animator.SetBool("isMoving", _isMoving);
+        if (_input.GetKeyDown(KeyCode.Z))
+        {
+            Interact();
+        }
     }
 
     IEnumerator Move(Vector3 targetPos)
@@ -57,13 +63,24 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactablesLayer) != null)
         {
             return false;
         }
         return true;
     }
+    void Interact()
+    {
+        Vector2 facingDir = new Vector2(_animator.GetFloat(moveX), _animator.GetFloat(moveY));
+        Vector3 interactPos = transfor.position + Vector3(facingDir);
+        var npcCollider = Physics2D.OverlapCircle(interactPos, 0.2f, interactablesLayer);
+        if (npcCollider != null)
+        {
 
+        }
+
+
+    }
 
 
 
