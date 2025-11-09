@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         _animator.SetBool("isMoving", _isMoving);
-        if (_input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Interact();
         }
@@ -71,12 +71,12 @@ public class PlayerController : MonoBehaviour
     }
     void Interact()
     {
-        Vector2 facingDir = new Vector2(_animator.GetFloat(moveX), _animator.GetFloat(moveY));
-        Vector3 interactPos = transfor.position + Vector3(facingDir);
+        var facingDir = new Vector3(_animator.GetFloat("moveX"), _animator.GetFloat("moveY"));
+        var interactPos = transform.position + facingDir;
         var npcCollider = Physics2D.OverlapCircle(interactPos, 0.2f, interactablesLayer);
         if (npcCollider != null)
         {
-
+            npcCollider.GetComponent<Interactable>()?.Interact();
         }
 
 
