@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class Dialog
 {
-    [SerializeField]
-    List<string> lines;
-    public List<string> lines
+    [SerializeField] List<string> lines;
+    public List<string> Lines
     {
         get { return lines; }
     }

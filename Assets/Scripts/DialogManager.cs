@@ -7,10 +7,16 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private TMP_Text dialogText;
     [SerializeField] int lettersPerSecond;
     [SerializeField] private GameObject dialogBox;
-    public void ShowDialog()
+    public static DialogManager Instance { get; private set; }
+
+    private void Awake()
     {
-        dialogBox.SetActive(True);
-        StartCoroutine(TypeDialog());
+        Instance = this;
+    }
+    public void ShowDialog(Dialog dialog)
+    {
+        dialogBox.SetActive(true);
+        StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
     public IEnumerator TypeDialog(string line)
     {
