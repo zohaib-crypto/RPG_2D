@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    void Update()
+    public void HandleUpdate()
     {
         if (!_isMoving)
         {
@@ -73,10 +73,10 @@ public class PlayerController : MonoBehaviour
     {
         var facingDir = new Vector3(_animator.GetFloat("moveX"), _animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
-        var npcCollider = Physics2D.OverlapCircle(interactPos, 0.2f, interactablesLayer);
-        if (npcCollider != null)
+        var Collider = Physics2D.OverlapCircle(interactPos, 0.2f, interactablesLayer);
+        if (Collider != null)
         {
-            npcCollider.GetComponent<Interactable>()?.Interact();
+            Collider.GetComponent<Interactable>()?.Interact();
         }
 
 
