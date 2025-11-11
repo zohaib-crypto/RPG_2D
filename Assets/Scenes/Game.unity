@@ -462,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &466992567
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1406,6 +1406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141016098}
   - component: {fileID: 1141016097}
+  - component: {fileID: 1141016099}
   m_Layer: 0
   m_Name: Game_Controller
   m_TagString: Untagged
@@ -1441,6 +1442,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1141016099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141016096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08487ffa2120f3b429a490e39b871a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogText: {fileID: 828122463}
+  lettersPerSecond: 40
+  dialogBox: {fileID: 466992566}
 --- !u!1 &1297037038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,6 +1730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d618c0367e05c3549a6fe15b15f538e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - Hello there!
+    - Welcome to the game.
+    - We are happy that you are here.
 --- !u!1 &1725796609
 GameObject:
   m_ObjectHideFlags: 0
