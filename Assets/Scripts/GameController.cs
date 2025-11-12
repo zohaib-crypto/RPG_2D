@@ -8,6 +8,21 @@ public class GameController : MonoBehaviour
     [SerializeField]
     PlayerController playerController;
     GameState state;
+    private void Start()
+    {
+        DialogManager.Instance.OnShowDialog += () =>
+        {
+            state = GameState.dialog;
+        };
+        DialogManager.Instance.OnHideDialog += () =>
+        {
+            if (state == GameState.Dialog)
+            {
+                state = GameState.FreeRoam;
+            }
+
+        };
+    }
 
     private void Update()
     {
