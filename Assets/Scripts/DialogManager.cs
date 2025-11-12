@@ -13,6 +13,10 @@ public class DialogManager : MonoBehaviour
     {
         Instance = this;
     }
+    public void HandleUpdate()
+    {
+
+    }
     public void ShowDialog(Dialog dialog)
     {
         dialogBox.SetActive(true);

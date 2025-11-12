@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ChallengerController : MonoBehaviour, Interactable
 {
+    [SerializeField] Dialog dialog;
     public void Interact()
     {
-        Debug.Log("fight with me");
+        DialogManager.Instance.ShowDialog(dialog);
     }
 
 }
