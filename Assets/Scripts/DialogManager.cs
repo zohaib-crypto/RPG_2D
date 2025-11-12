@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 public class DialogManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class DialogManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
         {
             ++currentLine;
-            if (currentLine<dialog.Lines.Count>)
+            if (currentLine < dialog.Lines.Count)
             {
                 StartCoroutine(TypeDialog(dialog.Lines[currentLine]));
             }

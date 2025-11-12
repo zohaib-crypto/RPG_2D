@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     {
         DialogManager.Instance.OnShowDialog += () =>
         {
-            state = GameState.dialog;
+            state = GameState.Dialog;
         };
         DialogManager.Instance.OnHideDialog += () =>
         {
