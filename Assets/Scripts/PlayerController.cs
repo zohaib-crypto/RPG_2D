@@ -5,16 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField]
-    private float _moveSpeed;
-    [SerializeField]
-    private bool _isMoving;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private bool _isMoving;
     private Vector2 _input;
     private Animator _animator;
-    [SerializeField]
-    private LayerMask solidObjectsLayer;
-    [SerializeField]
-    private LayerMask interactablesLayer;
+    [SerializeField] private LayerMask solidObjectsLayer;
+    [SerializeField] private LayerMask interactablesLayer;
+    [SerializeField] private LayerMask battleLayer;
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -59,6 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         _isMoving = false;
+        CheckForEncounters();
     }
 
     private bool IsWalkable(Vector3 targetPos)
@@ -77,6 +75,14 @@ public class PlayerController : MonoBehaviour
         if (Collider != null)
         {
             Collider.GetComponent<Interactable>()?.Interact();
+        }
+    }
+    private void CheckForEncounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.01f, battleLayer) != null)
+        {
+            //battle
+            Debug.Log("Fight");
         }
 
 
