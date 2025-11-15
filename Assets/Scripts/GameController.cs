@@ -24,19 +24,19 @@ public class GameController : MonoBehaviour
         };
     }
 
-    // private void Update()
-    // {
-    //     if (state == GameState.FreeRoam)
-    //     {
-    //         playerController.HandleUpdate();
-    //     }
-    //     else if (state == GameState.Dialog)
-    //     {
-    //         DialogManager.Instance.HandleUpdate();
-    //     }
-    //     else if (state == GameState.Battle)
-    //     {
+    private void Update()
+    {
+        if (state == GameState.FreeRoam)
+        {
+            playerController.HandleUpdate();
+        }
+        else if (state == GameState.Dialog)
+        {
+            DialogManager.Instance.HandleUpdate();
+        }
+        else if (state == GameState.Battle)
+        {
 
-    //     }
+        }
     }
 }
